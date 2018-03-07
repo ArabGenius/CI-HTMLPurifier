@@ -20,13 +20,13 @@
 
 class MY_Security extends CI_Security {
 
-	public function htmlpurify($html,$conf='') {
+	public function htmlpurify($html,$conf = null) {
 	    $getHTMLPurifier_folder = glob(APPPATH . 'third_party/htmlpurifier-*-standalone',GLOB_ONLYDIR);
 	    if(count($getHTMLPurifier_folder) > 0){
 		    include_once $getHTMLPurifier_folder[0].'/HTMLPurifier.standalone.php';
 		    $HTMLPurifier = new HTMLPurifier;
-		    $html = $HTMLPurifier->purify($html);
-		    return $html;	    	
+		    $html = $HTMLPurifier->purify($html,$conf);
+		    return $html;
 	    }else{
 	    	die("You need to download HTMLPurifier.standalone and put it in the third_party folder");
 	    }
